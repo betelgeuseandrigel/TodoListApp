@@ -1,0 +1,278 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --color-body: #e8f3f8;
+    --color-header: #061b25;
+    --color-text: var(--color-header);
+    --color-text-muted: #a4d0e3;
+    --color-input: #082937;
+    --color-input-ligther: #0b374a;
+    --color-secondary: #ff8c42;
+    --color-secondary-daker: #cc7035;
+    --color-secondary-lighter: #ffa368;
+    --color-tertiary: #1c89b8;
+    --color-text-badge: #e8f3f8;
+    --color-disabled: #d2e7f1;
+    --color-text-disabled: #77b8d4;
+
+    --global-border-radius: 6px;
+    --global-transition: all .2s ease-in-out;
+
+}
+
+html {
+    font-size: 18px;
+}
+
+body{
+   font-family: 'Poppins', sans-serif; 
+   background-color: var(--color-body);
+   color: var(--color-text);
+}
+
+.container{
+    padding: 0 1.5rem;
+}
+
+button, input[type="checkbox"]{
+    cursor: pointer;
+}
+
+ol, ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1{
+    color: white;
+    margin-bottom: 0 0 2rem;
+}
+
+a{
+    color: var(--color-text);
+    transition: var(--global-transition);
+}
+
+a:hover{
+    color: var(--color-secondary);
+}
+
+/* Forms */
+
+#todo-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#todo-form input{
+    background-color: var(--color-input);
+    border: 0;
+    padding: 1rem;
+    border-radius: var(--global-border-radius);
+    outline: 0;
+    color: white;
+}
+
+#todo-form input:hover, #todo-form input:focus{
+    background-color: var(--color-input-ligther);
+}
+
+#todo-form input{
+    background-color: var(--color-input);
+}
+
+#todo-form input::placeholder{
+    color: var(--color-text-muted);
+}
+
+#todo-form button{
+    border: 0;
+    padding: 1rem;
+    border-radius: var(--global-border-radius);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    background-color: var(--color-secondary);
+}
+
+#todo-form button:hover{
+    background-color: var(--color-secondary-daker);
+}
+
+#todo-form button:active{
+    background-color: var(--color-secondary-lighter);
+}
+
+#todo-form button, #todo-form input{
+    transition: var(--global-transition);
+}
+
+small, #todo-form button, .stats span{
+    font-size: .75rem;
+}
+
+/* Header */
+
+#main-header{
+    background-color: var(--color-header);
+    padding: 3rem 0;
+    margin-bottom: 2rem;
+}
+
+/* stats */
+
+.stats{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.stats li{
+    display: flex;
+    
+}
+
+.stats span{
+    padding: .25rem 5rem;
+}
+
+.stats span:first-child{
+    background-color: var(--color-header);
+    color: var(--color-text-muted);
+    border-radius: var(--global-border-radius) 0 0 var(--global-border-radius);
+}
+
+.stats span:nth-child(2){
+    background-color: var(--color-tertiary);
+    color: var(--color-body);
+    border-radius: 0 var(--global-border-radius) var(--global-border-radius) 0;
+    font-weight: 700;
+}
+
+/* To-Do List */
+.todos{
+    margin-bottom: 4rem;
+}
+
+.todos li{
+    background-color: white;
+    border-radius: var(--global-border-radius);
+    margin-bottom: 1rem;
+    padding: 1.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.todos li div{
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+}
+
+.todos li.complete{
+    background-color: var(--color-disabled);
+    text-decoration: line-through;
+    color: #77b8d4;
+}
+
+
+
+input[type="checkbox"]{
+    appearance: none;
+    background-color: transparent;
+    margin: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid var(--color-text);
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+    transition: var(--global-transition);
+}
+
+
+input[type="checkbox"]::before{
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='1em' viewBox='0 0 448 512'%3E%3C!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --%3E%3Cpath d='M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z'/%3E%3C/svg%3E");
+    transform: scale(0);
+    transition: var(--global-transition);
+}
+
+input[type="checkbox"]:checked{
+    background-color:#77b8d4;
+    border-color: #77b8d4;
+}
+
+input[type="checkbox"]:checked::before{
+    transform: scale(1);
+}
+
+.todos li button{
+    border: 0;
+    padding: .25rem;
+    display: grid;
+    place-content: center;
+    background-color: transparent;
+}
+
+.todos li button i{
+    color: #77b8d4;
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: var(--global-transition);
+}
+
+.todos li button:hover i{
+    color: var(--color-text);
+}
+
+.todos li button:active i{
+    transform: scale(.8);
+}
+
+.todos li span{
+    padding: 2px;
+    transition: var(--global-transition);
+    border-radius: var(--global-border-radius);
+}
+
+.todos li span:focus{
+    outline: none;
+    background-color: #77b8d4;
+}
+
+.todos li span[contenteditable]:hover{
+    background-color: #77b8d4;
+}
+
+
+
+/* 768px and above */
+@media screen and (min-width:768px){
+    .container{
+        max-width: 30rem;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    #todo-form{
+        flex-direction: row;
+    }
+
+    #todo-form input{
+        flex-grow: 1;
+    }
+}
+
+
+
